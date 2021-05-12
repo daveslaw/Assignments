@@ -9,8 +9,7 @@ for (let i = 1; i <= 50; i++) {
 // Input
 const fibonacciInput = document.getElementById("fibonacciInput");
 const inputButton = document.getElementById("inputButton");
-//console.log(fibonacciInput);
-//console.log(inputButton);
+
 
 //Button functionality
 const onInput = (event) => {
@@ -52,7 +51,7 @@ const submitInput = () => {
         response.json()
         .then((data) => {
           //console.log(data);
-          spinner.setAttribute('hidden');      
+          spinner.setAttribute('hidden', '');      
           document.getElementById("fibonacciOutput").innerHTML = data.result;
         });
       } else {
@@ -82,15 +81,12 @@ const fibLog = () => {
   fetch(urlFibResults)  
   .then((response) => response.json())
   .then((data) => {
-    //console.log(data);
-    //console.log(data.results);
-    //console.log(data.results[1]);
+    
     //let dateArray = [];
     data.results.forEach((fibResult) => {
     const inputNumber = (fibResult["number"]);
-    //console.log("Input number: " + inputNumber)
+    
     const outputNumber = (fibResult["result"]);
-    //console.log("Output number: " + outputNumber)
     
     const rawDate = (fibResult["createdDate"]);
     
@@ -103,12 +99,10 @@ const fibLog = () => {
     resultItem.innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
     resultTable.appendChild(resultItem);
 
-    //console.log(resultTable);
+    
     
 
-    //document.getElementById("resultTable").innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;
-    //console.log("Date: " + formattedDate );
-    //console.log(dateArray);
+    
     // function descendDate() {
     //   dateArray.sort(function(a, b){return b-a});   
     // }
@@ -130,6 +124,12 @@ const fibLog = () => {
 
 fibLog();
 
+const doubleFunction = () => {
+  submitInput();
+  fibLog();
+}   
+
 
 fibonacciInput.addEventListener("input", onInput);
-inputButton.addEventListener("click", submitInput);  
+inputButton.addEventListener("click", doubleFunction);  
+
