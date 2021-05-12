@@ -21,6 +21,7 @@ const onInput = (event) => {
 };
 
 const spinner = document.getElementById("spinner");
+console.log(spinner);
 const errorMessage = document.createElement("div");
 errorMessage.classList.add("error-message");
 
@@ -40,7 +41,7 @@ const submitInput = () => {
     
   }
   else if (fibonacciInput.value <= 50 && fibonacciInput.value > -1 ) {
-    spinner.removeAttribute('hidden');   
+    spinner.removeAttribute("hidden");
    
     const url = "http://localhost:5050/fibonacci/" + fibonacciInput.value;
     console.log(url);  
@@ -74,6 +75,7 @@ const submitInput = () => {
   }  
 };
 
+//Function for the log of results
 const fibLog = () => {
   
   urlFibResults = "http://localhost:5050/getFibonacciResults";
@@ -81,9 +83,13 @@ const fibLog = () => {
   fetch(urlFibResults)  
   .then((response) => response.json())
   .then((data) => {
-    
+    console.log(data);
     //let dateArray = [];
+    const dataResults = data.results;
+    console.log(dataResults);
+    //sort the entries at this point
     data.results.forEach((fibResult) => {
+    
     const inputNumber = (fibResult["number"]);
     
     const outputNumber = (fibResult["result"]);
@@ -96,6 +102,8 @@ const fibLog = () => {
     //dateArray.push(rawDate);
     const resultTable = document.getElementById("resultTable");
     let resultItem = document.createElement("div");
+    resultItem.classList.add("result-item");
+    console.log(resultItem);
     resultItem.innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
     resultTable.appendChild(resultItem);
 

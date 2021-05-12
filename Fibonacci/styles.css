@@ -8,6 +8,8 @@ h1 {
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
 }
+
+/* 
 input {
     border-radius: 5%;
     width: 5%;
@@ -15,6 +17,7 @@ input {
 .btn {
     margin: 2% 2%;
 }
+*/
 
 .fib-calculator {
     margin: 2% 0% 0% 5%;
@@ -24,7 +27,7 @@ input {
     font-size: 24px;
     font-weight: 700;
     text-decoration: underline;
-}
+} 
 
 #spinner:not([hidden]) {
     position: fixed;
@@ -48,6 +51,16 @@ input {
     animation: spin 1s infinite linear
   }
   
+  .result-table {
+    display: flex;
+    flex-flow: column wrap;
+    width: 65%
+  }
+  .result-item {
+    border-bottom: 1px black solid;
+    margin-bottom: 2% ;
+  }
+
   @keyframes spin {
     from {
       transform: rotate(0deg);
