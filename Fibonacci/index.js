@@ -52,7 +52,7 @@ const submitInput = () => {
         response.json()
         .then((data) => {
           //console.log(data);
-          spinner.setAttribute('hidden', '');      
+          spinner.setAttribute('hidden');      
           document.getElementById("fibonacciOutput").innerHTML = data.result;
         });
       } else {
@@ -95,16 +95,19 @@ const fibLog = () => {
     const rawDate = (fibResult["createdDate"]);
     
     let formattedDate = new Date(rawDate);
+    
+    
     //dateArray.push(rawDate);
+    const resultTable = document.getElementById("resultTable");
+    let resultItem = document.createElement("div");
+    resultItem.innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
+    resultTable.appendChild(resultItem);
 
-    console.log(`The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`);
-       
+    //console.log(resultTable);
     
-    
+
+    //document.getElementById("resultTable").innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;
     //console.log("Date: " + formattedDate );
-
-
-    })
     //console.log(dateArray);
     // function descendDate() {
     //   dateArray.sort(function(a, b){return b-a});   
@@ -114,6 +117,10 @@ const fibLog = () => {
     // function ascendDate() {
     //   dateArray.sort(function(a, b){return a-b});   
     // }
+
+
+    })
+    
     
   })
        
