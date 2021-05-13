@@ -1,8 +1,3 @@
-// Fibonacci array generator
-
-
-
-
 // Input
 const fibonacciInput = document.getElementById("fibonacciInput");
 const inputButton = document.getElementById("inputButton");
@@ -16,6 +11,8 @@ const onInput = (event) => {
       inputButton.disabled = true;
     }
 };
+
+fibonacciInput.addEventListener("input", onInput);
 
 const spinner = document.getElementById("spinner");
 //console.log(spinner);
@@ -34,10 +31,13 @@ for (let i = 1; i <= 50; i++) {
   fibArray.push(fibArrayItem);
 }
 
-const submitInputNoSave = () => {
-  console.log("The fib of " + fibonacciInput.value + "is " + fibArray[fibonacciInput.value])
-}
 
+//Function for sumbitting to internal calculations without saving
+const submitInputNoSave = () => {
+let indexValue = parseInt(fibonacciInput.value) + 1;
+console.log("The fib of " + fibonacciInput.value + " is " + fibArray[indexValue]);
+document.getElementById("fibonacciOutput").innerHTML = fibArray[indexValue];
+}
 
 //Function for submitting Input to server
 const submitInputSave = () => {   
@@ -127,16 +127,17 @@ const doubleFunction = () => {
 
 let saveResults = document.getElementById("saveResults");
 
-if (saveResults.checked) {
-  inputButton.addEventListener("click", doubleFunction)
-  
-} else {
-  inputButton.addEventListener("click", submitInputNoSave)
-  console.log("unchecked")
-  
-}
+inputButton.addEventListener("click", function() {
+  if (saveResults.checked) {
+    doubleFunction();
+  } else {
+    submitInputNoSave();
+  }
+})
+
+
   
 
 //inputButton.addEventListener("click", doubleFunction)
-fibonacciInput.addEventListener("input", onInput);
+
 
