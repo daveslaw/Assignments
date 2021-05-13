@@ -1,9 +1,6 @@
 // Fibonacci array generator
-let fibArray = [0, 1]; 
-for (let i = 1; i <= 50; i++) {
-  let fibArrayItem = fibArray[i-1] + fibArray[i];
-  fibArray.push(fibArrayItem);
-}
+
+
 
 
 // Input
@@ -21,7 +18,7 @@ const onInput = (event) => {
 };
 
 const spinner = document.getElementById("spinner");
-console.log(spinner);
+//console.log(spinner);
 const errorMessage = document.createElement("div");
 errorMessage.classList.add("error-message");
 
@@ -29,8 +26,21 @@ errorMessage.classList.add("error-message");
 
 let fibCalc = document.getElementById("fib-calc")
 
-//Function for submitting Input 
-const submitInput = () => {   
+
+//Function on submitting input to my own calculation
+let fibArray = [0, 1]; 
+for (let i = 1; i <= 50; i++) {
+  let fibArrayItem = fibArray[i-1] + fibArray[i];
+  fibArray.push(fibArrayItem);
+}
+
+const submitInputNoSave = () => {
+  console.log("The fib of " + fibonacciInput.value + "is " + fibArray[fibonacciInput.value])
+}
+
+
+//Function for submitting Input to server
+const submitInputSave = () => {   
   
   if (fibonacciInput.value > 50) {
     document.getElementById("fibonacciOutput").innerHTML = ""
@@ -44,7 +54,7 @@ const submitInput = () => {
     spinner.removeAttribute("hidden");
    
     const url = "http://localhost:5050/fibonacci/" + fibonacciInput.value;
-    console.log(url);  
+      
     fetch(url)
     .then((response) => {
       //console.log(response); 
@@ -73,6 +83,8 @@ const submitInput = () => {
     errorMessage.textContent = "Can't be less than 1";
     fibCalc.appendChild(errorMessage);
   }  
+
+  
 };
 
 //Function for the log of results
@@ -83,61 +95,48 @@ const fibLog = () => {
   fetch(urlFibResults)  
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
-    //let dateArray = [];
-    const dataResults = data.results;
-    console.log(dataResults);
-    //sort the entries at this point
-    data.results.forEach((fibResult) => {
+    const dataResults = data.results;  
     
-    const inputNumber = (fibResult["number"]);
+    dataResults.sort(function(a,b){
+    return b.createdDate - a.createdDate
+    })
     
-    const outputNumber = (fibResult["result"]);
+    dataResults.forEach((fibResult) => {
     
-    const rawDate = (fibResult["createdDate"]);
-    
-    let formattedDate = new Date(rawDate);
-    
-    
-    //dateArray.push(rawDate);
+    const inputNumber = (fibResult["number"]);     
+    const outputNumber = (fibResult["result"]);     
+    const rawDate = (fibResult["createdDate"]);     
+    const formattedDate = new Date(rawDate);
+
     const resultTable = document.getElementById("resultTable");
     let resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
-    console.log(resultItem);
+    
     resultItem.innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
     resultTable.appendChild(resultItem);
-
-    
-    
-
-    
-    // function descendDate() {
-    //   dateArray.sort(function(a, b){return b-a});   
-    // }
-
-    
-    // function ascendDate() {
-    //   dateArray.sort(function(a, b){return a-b});   
-    // }
-
-
-    })
-    
-    
+    })   
   })
-       
-  
-
 }   
 
 fibLog();
 
 const doubleFunction = () => {
-  submitInput();
+  submitInputSave();
   fibLog();
 }   
 
+let saveResults = document.getElementById("saveResults");
 
+if (saveResults.checked) {
+  inputButton.addEventListener("click", doubleFunction)
+  
+} else {
+  inputButton.addEventListener("click", submitInputNoSave)
+  console.log("unchecked")
+  
+}
+  
+
+//inputButton.addEventListener("click", doubleFunction)
 fibonacciInput.addEventListener("input", onInput);
-inputButton.addEventListener("click", doubleFunction);  
 
