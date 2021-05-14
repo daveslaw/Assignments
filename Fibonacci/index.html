@@ -10,28 +10,42 @@
     <title>Fibonacci Assignment</title>
 </head>
 <body>
-    <div class="fib-calculator" id="fib-calc">
-        <h1>Fibonacci Calculator</h1>
-        <span>The Fibonacci of </span>
-        <input id="fibonacciInput" placeholder="#" value="">
-        <button id="inputButton" class="btn btn-primary" disabled>is</button>
-        <span class = "fib-output" id="fibonacciOutput"></span>
-        <div class= "spinner" id="spinner" hidden></div>        
-    </div>
-    <div>
-        <form action="">
-            <input type="checkbox" id="saveResults" name="save-calc">
-            <label for="save-calc">Save Calculations</label>
-        </form>
-    </div>
-    <div class="result-wrapper">
-        <div class="result-header">Results</div>
-        <div class="result-table" id="resultTable"></div>
+    <div class="wrapper">
+        <div class="fib-calculator" id="fib-calc">
+            <h1>Fibonacci Calculator</h1>
+            <div class="calc-text">
+                <div class="calc-text-item">The Fibonacci of</div>
+                <input class="calc-text-item input-form" id="fibonacciInput" placeholder="#" value="">           
+                <button id="inputButton" class="btn btn-primary calc-text-item" disabled>is</button>
+                <div class = "fib-output calc-text-item" id="fibonacciOutput"></div>
+            </div>
+            <div class="alert-message" hidden >
+                Can't be over 50
+              </div>
+
+            <div>
+                <form action="">
+                    <input class="checkbox" type="checkbox" id="saveResults" name="save-calc">
+                    <label for="save-calc">Save Calculations</label>
+                </form>
+            </div>
+                        
+        </div>        
+        
+        <div class="result-wrapper">
+            <div class="result-header">
+                <h2>Results</h2>
+                <div class= "spinner" id="spinner" hidden></div>  
+            </div>
+            
+            <div class="result-table" id="resultTable"></div>
+        </div>
     </div>
 
     
     
-
+    <!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
     <script src="../Fibonacci/index.js"></script>
+    
 </body>
 </html>

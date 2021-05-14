@@ -13,11 +13,9 @@ const onInput = (event) => {
 };
 
 fibonacciInput.addEventListener("input", onInput);
-
 const spinner = document.getElementById("spinner");
-//console.log(spinner);
-const errorMessage = document.createElement("div");
-errorMessage.classList.add("error-message");
+const alertMessage = document.getElementsByClassName("alert-message")
+//console.log(alertMessage);
 
 
 
@@ -34,9 +32,20 @@ for (let i = 1; i <= 50; i++) {
 
 //Function for sumbitting to internal calculations without saving
 const submitInputNoSave = () => {
-let indexValue = parseInt(fibonacciInput.value) + 1;
-console.log("The fib of " + fibonacciInput.value + " is " + fibArray[indexValue]);
-document.getElementById("fibonacciOutput").innerHTML = fibArray[indexValue];
+  let indexValue = parseInt(fibonacciInput.value) + 1;
+  
+  if (fibonacciInput.value > 50) {
+    document.getElementById("fibonacciOutput").innerHTML = ""
+    fibonacciInput.style.color = "red";
+    fibonacciInput.style.border = "red 1px solid";
+    
+    
+  } 
+    else if (fibonacciInput.value <= 50 && fibonacciInput.value > -1 ) {
+    fibonacciInput.style = "";
+    document.getElementById("fibonacciOutput").innerHTML = fibArray[indexValue];
+  } 
+  
 }
 
 //Function for submitting Input to server
@@ -46,8 +55,8 @@ const submitInputSave = () => {
     document.getElementById("fibonacciOutput").innerHTML = ""
     fibonacciInput.style.color = "red";
     fibonacciInput.style.border = "red 1px solid";
-    errorMessage.textContent = "Can't be over 50";
-    fibCalc.appendChild(errorMessage);
+    // alertMessage.textContent = "Can't be over 50";
+    // fibCalc.appendChild(alertMessage);
     
   }
   else if (fibonacciInput.value <= 50 && fibonacciInput.value > -1 ) {
@@ -80,8 +89,9 @@ const submitInputSave = () => {
   else if (fibonacciInput.value < 0) {
     fibonacciInput.style.color = "red";
     fibonacciInput.style.border = "red 1px solid";
-    errorMessage.textContent = "Can't be less than 1";
-    fibCalc.appendChild(errorMessage);
+    alertMessage.removeAttribute("hidden");
+    alertMessage.textContent = "Can't be less than 1";
+    //fibCalc.appendChild(alertMessage);
   }  
 
   
@@ -138,6 +148,5 @@ inputButton.addEventListener("click", function() {
 
   
 
-//inputButton.addEventListener("click", doubleFunction)
 
 

@@ -9,28 +9,58 @@ h1 {
     font-weight: 400;
 }
 
-/* 
+
 input {
-    border-radius: 5%;
-    width: 5%;
+  width: 86px;
+  height: 38px;
+  left: 372px;
+  top: 229px;
+  padding-left: 1px;
+
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  border-radius: 4px;
+  
+
 }
+
 .btn {
-    margin: 2% 2%;
+  align-self:flex-start;
 }
-*/
 
 .fib-calculator {
-    margin: 2% 0% 0% 5%;
+    font-size: 24px;
+    /* line-height: 24px; */
+}
+
+.calc-text-item {
+  margin-right: 1%;
 }
 
 .fib-output {
-    font-size: 24px;
     font-weight: 700;
     text-decoration: underline;
 } 
 
+label {
+  font-size: 16px;
+}
+
+.alert-message {
+  color: #A94442;
+  display:inline;
+  margin-left: 13%;
+  padding: 1% 1%;
+  font-size: 16px; 
+  border: 1px solid #EBCCCC;
+  background: #F2DEDE;
+  border-radius: 4px;
+  
+}
+
 #spinner:not([hidden]) {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -38,27 +68,18 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 3%;
   }
   
   #spinner::after {
     content: "";
-    width: 80px;
-    height: 80px;
+    width: 20px;
+    height: 20px;
     border: 2px solid #f3f3f3;
-    border-top: 3px solid ;
+    border-top: 3px solid;
     border-radius: 100%;
     will-change: transform;
     animation: spin 1s infinite linear
-  }
-  
-  .result-table {
-    display: flex;
-    flex-flow: column wrap;
-    width: 65%
-  }
-  .result-item {
-    border-bottom: 1px black solid;
-    margin-bottom: 2% ;
   }
 
   @keyframes spin {
@@ -70,9 +91,55 @@ input {
     }
   }
   
-.error-message {
-  background: #F2DEDE;
-  color: #A94442;
-  border: 1px solid #EBCCCC;
-}
   
+
+  .result-table {
+    
+    display: flex;
+    flex-flow: column wrap;    
+  }
+
+  .result-header {
+    display: flex;
+    flex-flow: row;
+  }
+
+  .result-item {
+    border-bottom: 1px black solid;
+    margin-bottom: 2% ;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    border: red 3px solid;
+    margin: 2% 10%;
+  }
+
+  .calc-text {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    margin-bottom: 1%;
+    
+
+    
+  }
+
+  .checkbox {
+    width: 14px;
+    height: 14px;
+    left: 169px;
+    top: 281px;
+
+
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+  }
+
+ 
+  
+
