@@ -2,7 +2,6 @@
 const fibonacciInput = document.getElementById("fibonacciInput");
 const inputButton = document.getElementById("inputButton");
 
-
 //Button functionality
 const onInput = (event) => {
     if (fibonacciInput.value) {
@@ -14,13 +13,6 @@ const onInput = (event) => {
 
 fibonacciInput.addEventListener("input", onInput);
 const spinner = document.getElementById("spinner");
-const alertMessage = document.getElementsByClassName("alert-message")
-//console.log(alertMessage);
-
-
-
-let fibCalc = document.getElementById("fib-calc")
-
 
 //Function on submitting input to my own calculation
 let fibArray = [0, 1]; 
@@ -33,18 +25,27 @@ for (let i = 1; i <= 50; i++) {
 //Function for sumbitting to internal calculations without saving
 const submitInputNoSave = () => {
   let indexValue = parseInt(fibonacciInput.value) + 1;
-  
+
   if (fibonacciInput.value > 50) {
     document.getElementById("fibonacciOutput").innerHTML = ""
     fibonacciInput.style.color = "red";
     fibonacciInput.style.border = "red 1px solid";
-    
-    
+    const alertMessage = document.getElementById("alert-message");
+    alertMessage.removeAttribute("hidden");
+    console.log(alertMessage);
+    alertMessage.innerHTML = "Can't be over 50";
+       
   } 
     else if (fibonacciInput.value <= 50 && fibonacciInput.value > -1 ) {
     fibonacciInput.style = "";
     document.getElementById("fibonacciOutput").innerHTML = fibArray[indexValue];
   } 
+    else if (fibonacciInput.value < 0) {
+    fibonacciInput.style.color = "red";
+    fibonacciInput.style.border = "red 1px solid";
+    alert("Can't be less than 0");
+    
+  }  
   
 }
 
@@ -55,8 +56,10 @@ const submitInputSave = () => {
     document.getElementById("fibonacciOutput").innerHTML = ""
     fibonacciInput.style.color = "red";
     fibonacciInput.style.border = "red 1px solid";
-    // alertMessage.textContent = "Can't be over 50";
-    // fibCalc.appendChild(alertMessage);
+    const alertMessage = document.getElementById("alert-message");
+    alertMessage.removeAttribute("hidden");
+    console.log(alertMessage);
+    alertMessage.innerHTML = "Can't be over 50";
     
   }
   else if (fibonacciInput.value <= 50 && fibonacciInput.value > -1 ) {
@@ -66,19 +69,20 @@ const submitInputSave = () => {
       
     fetch(url)
     .then((response) => {
-      //console.log(response); 
       if (response.ok) {
         response.json()
         .then((data) => {
-          //console.log(data);
           spinner.setAttribute('hidden', '');      
+          document.getElementById("fibonacciOutput").style.color = "#373A3C";
           document.getElementById("fibonacciOutput").innerHTML = data.result;
         });
       } else {
         response.text()
         .then((error) => {
           spinner.setAttribute('hidden', '');  
-          document.getElementById("fibonacciOutput").innerHTML = error;
+          document.getElementById("fibonacciOutput").style.color = "red";
+          document.getElementById("fibonacciOutput").style.textDecoration = "";
+          document.getElementById("fibonacciOutput").innerHTML = "Server error: " + error;
         });
       }
       
@@ -89,9 +93,8 @@ const submitInputSave = () => {
   else if (fibonacciInput.value < 0) {
     fibonacciInput.style.color = "red";
     fibonacciInput.style.border = "red 1px solid";
-    alertMessage.removeAttribute("hidden");
-    alertMessage.textContent = "Can't be less than 1";
-    //fibCalc.appendChild(alertMessage);
+    alert("Can't be less than 0");
+    
   }  
 
   
@@ -122,7 +125,7 @@ const fibLog = () => {
     let resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
     
-    resultItem.innerHTML = `The fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
+    resultItem.innerHTML = `The Fibonacci of ${inputNumber} is ${outputNumber}. Calculated at: ${formattedDate}`;  
     resultTable.appendChild(resultItem);
     })   
   })
@@ -131,8 +134,8 @@ const fibLog = () => {
 fibLog();
 
 const doubleFunction = () => {
-  submitInputSave();
   fibLog();
+  submitInputSave();
 }   
 
 let saveResults = document.getElementById("saveResults");

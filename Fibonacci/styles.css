@@ -1,12 +1,15 @@
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    color: #373A3C;
+
 
 }
 
 h1 {
     font-size: 72px;
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+    color: #373A3C;
 }
 
 
@@ -36,11 +39,14 @@ input {
 
 .calc-text-item {
   margin-right: 1%;
+  color: #373A3C;
+
 }
 
 .fib-output {
     font-weight: 700;
     text-decoration: underline;
+    color: #373A3C;
 } 
 
 label {
@@ -50,7 +56,7 @@ label {
 .alert-message {
   color: #A94442;
   display:inline;
-  margin-left: 13%;
+  margin-left: 16.5%;
   padding: 1% 1%;
   font-size: 16px; 
   border: 1px solid #EBCCCC;
@@ -97,11 +103,15 @@ label {
     
     display: flex;
     flex-flow: column wrap;    
+    color: #373A3C;
+
   }
 
   .result-header {
     display: flex;
     flex-flow: row;
+    color: #373A3C;
+
   }
 
   .result-item {
@@ -112,8 +122,7 @@ label {
   .wrapper {
     display: flex;
     flex-flow: column wrap;
-    border: red 3px solid;
-    margin: 2% 10%;
+     margin: 3.5% 18%;
   }
 
   .calc-text {
@@ -140,6 +149,15 @@ label {
     border-radius: 2px;
   }
 
+  .save-calc {
+    color: #373A3C;
+
+  }
+
+  .result-wrapper {
+    margin-top: 2%;
+  }
+  
  
   
 
