@@ -26,15 +26,28 @@
 
 /* Styles for company page */
 
+body {
+    background-color: #C2CFE0;
+}
+
 .wrapper {
-    font-family: "Lato", sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;    
+    
     margin: 3% 15%;
 } 
+
+.header-wrapper {
+    background-color: white;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    
+    padding: 2% 3%;
+}
 
 .company-header{
     display: flex;
     flex-flow: row nowrap;
-    border: red solid 1px;
+    /* border: red solid 1px; */
     align-items:flex-end;
     height: 3rem;
     /* justify-content: space-between; */
@@ -46,42 +59,57 @@
 }
 
 img {
-    border: blue 1px solid;
+    display: block;
+    /* border: blue 1px solid; */
     /* align-self:baseline; */
     max-height:2.5rem;  
   
 }
 .company-name{
     font-size: 1.5em;
-    border: black dotted 1px;
+    /* border: black dotted 1px; */
     margin-left: 2%;
+    font-weight: bold;
 }
 
 .price-wrapper{
-    border: black dotted 1px;
-    margin-left: 5%;
+    /* border: black dotted 1px; */
     display: flex;
-    flex-flow: wrap row;
-    width: 30%;
+    flex-flow: nowrap row;
+    width:50%;
+    margin-top: 2%;
+    font-size: 1.2em;
 
 }
 
 .price{
-    border: blue solid 1px;
-    margin-right:5%;
+    /* border: blue solid 1px; */
+    width: 50%;
+    font-weight: bold;   
 
 }
 
 .price-movement{
-    border: blue solid 1px;
+    /* border: blue solid 1px; */
     margin-right:2%;
 }
 
 .percentage-movement{
-    border: blue solid 1px;
+    /* border: blue solid 1px; */
 
 }
 
-.company-description{}
+.company-description{
+    background-color: white;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    margin-top:3%;
+    padding: 2% 3%;
+    font-size: 1.2em;
+}
 
-.price-history-chart{} */
+.chart-wrapper{
+    background-color: white;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}

@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="../Stock exchange/styles.css" rel="stylesheet" />
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header></header>
     <div class="wrapper" id="wrapper">
-        <div id="company-header" class="company-header">
-            <div id="logo-wrapper"><img id="company-logo" alt="Company Logo" class="company-logo"></div>
-            <div id="company-name" class="company-name"></div>            
+        <div class="header-wrapper">
+            <div id="company-header" class="company-header">
+                <div id="logo-wrapper"><img id="company-logo" alt="Company Logo" class="company-logo"></div>
+                <a id="company-name" class="company-name" target="_blank"></a>     
+                        
+            </div>
             <div id="price-wrapper" class="price-wrapper">
                 <div id="price" class="price"></div>
                 <div id="price-movement" class="price-movement"></div>
                 <div id="percentage-movement" class="percentage-movement"></div>
-            </div>            
-        </div>
+            </div>
+        </div>    
         <div id="company-description" class="company-description"></div>
-        <div id="price-history-chart" class="price-history-chart"></div>  
+        <div class="chart-wrapper">
+            <canvas id="myChart" width="400" height="250"></canvas>        
+        </div>
 
     </div>
     
@@ -29,6 +36,7 @@
     
     
     <script src="../Stock exchange/company.js"></script>
+    
 
 </body>
 </html>

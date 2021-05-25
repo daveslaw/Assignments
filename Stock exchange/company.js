@@ -4,7 +4,8 @@ const stockPrice = document.getElementById("price");
 const priceMovement = document.getElementById("price-movement");
 const percMovement = document.getElementById("percentage-movement");
 const companyDescription = document.getElementById("company-description");
-const priceHistory = document.getElementById("price-history-chart");
+const priceHistoryChart = document.getElementById("price-history-chart");
+
 
 const urlPath = window.location.href;
 urlArray = urlPath.split("/");
@@ -22,23 +23,22 @@ fetch(newUrl)
 .then((data) => {
   console.log(data);
   companyName.innerHTML = `${data.profile.companyName} (${data.symbol})`;
-  stockPrice.innerHTML = `${data.profile.currency} ${data.profile.price}`;
+  companyName.href = `${data.profile.website}`
+  stockPrice.innerHTML = `Stock price: ${data.profile.currency} ${data.profile.price}`;
   
   if (data.profile.changes > 0) {
     priceMovement.style.color = "green";
     percMovement.style.color = "green";
-    priceMovement.innerHTML = `+${data.profile.changes}`;
-    
+    priceMovement.innerHTML = `+${data.profile.changes}`;    
   } else if (data.profile.changes < 0) {
     priceMovement.style.color = "red";
     percMovement.style.color = "red";
     priceMovement.innerHTML = `${data.profile.changes}`;
-    
-  } else if (data.profiles.changes == 0) {
+  } else if (data.profile.changes == 0) {
     
     priceMovement.style.color = "black";
     percMovement.style.color = "black";
-    priceMovement.innerHTML = `${data.profile.changes}`;
+    priceMovement.innerHTML = `--`;
     
   }  
   
@@ -53,6 +53,38 @@ fetch(newUrl)
   
 
 })
+
+// Chart 
+
+const labels = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+];
+
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'My First dataset',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: [0, 10, 5, 2, 20, 30, 45],
+  }]
+};
+
+const config = {
+  type: 'line',
+  data,
+  options: {}
+};
+
+var myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
 
 
 
