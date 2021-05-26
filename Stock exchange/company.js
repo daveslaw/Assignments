@@ -16,12 +16,12 @@ const queryStr = urlArray[urlArray.length - 1]
 
 
 const newUrl = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${queryStr}`;
-console.log(newUrl);
+
 
 fetch(newUrl)
 .then((response) => response.json())
 .then((data) => {
-  console.log(data);
+  //console.log(data);
   companyName.innerHTML = `${data.profile.companyName} (${data.symbol})`;
   companyName.href = `${data.profile.website}`
   stockPrice.innerHTML = `Stock price: ${data.profile.currency} ${data.profile.price}`;
@@ -56,22 +56,35 @@ fetch(newUrl)
 
 // Chart 
 
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
+const historyDataURL = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/${queryStr}?serietype=line`
+console.log(historyDataURL);
+
+
+// const priceHistoryArray = [];
+// const dateArray = [];
+const getChart = () => {
+  fetch(historyDataURL)
+    .then((response) => response.json())
+    .then((historyData) => {
+    console.log(historyData);    
+    priceHistoryArray = historyData.historical.map(x => x["close"]);
+    priceHistoryArray = priceHistoryArray.reverse();
+    dateArray = historyData.historical.map(x => x["date"]);
+    dateArray = dateArray.reverse();
+    
+
+    
+const labels = dateArray;
 
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My First dataset',
+    label: `${historyData.symbol} Stock Price`,
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
+    data: priceHistoryArray,
+
+    
   }]
 };
 
@@ -86,15 +99,11 @@ var myChart = new Chart(
   config
 );
 
+ 
+    
+    
+  })
 
+}
 
-//console.log(usp.toString());
-
-// url=`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${symbol} `
-// console.log(url)
-// fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => {
-
-
-  //  })
+getChart();

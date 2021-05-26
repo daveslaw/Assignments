@@ -10,18 +10,33 @@
 
 
 </head>
-<body>
+<body class="home-page">
     <div class="main-wrapper">
+        <!-- <div class="searchbar-wrapper">
+            <input class="searchbar" id="searchInput" type="text" placeholder="Search..">
+            <button class="searchbar" id="searchButton" disabled>Search</button>
+               
+        </div> -->
         <div class="searchbar-wrapper">
-            <input id="searchInput" type="text" placeholder="Search..">
-            <button id="searchButton" class="btn btn-primary calc-text-item" disabled>Search</button>        
-        </div>
-        
-        <div class="result-wrapper" id="resultWrapper">
-            
+            <input type="search" id="searchInput" class="form-control rounded searchbar" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <button type="button"  id="searchButton" class="btn btn-outline-primary searchbar">search</button>
+          </div>
+        <div class="result-wrapper" id="resultWrapper" hidden>
+            <a class="result-element" id = "resultElement">
+                <div id="logo-wrapper"><img id="company-logo" alt="Company Logo" class="company-logo"></div>
+                <div id="company-name" class="company-name" ></div>
+                <div id="company-symbol" class="company-symbol"></div> 
+                
+                <div id="percentage-movement" class="percentage-movement"></div>
+             </a>    
         </div>
 
+        
+            
     </div>
+        
+    
     
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

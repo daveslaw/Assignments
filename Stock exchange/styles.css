@@ -1,7 +1,46 @@
+
 /* Styles for Search Page */
 
+.home-page {
+    background-color: #C2CFE0;
+
+}
+
+body {
+    background-color: #C2CFE0;
+    
+}
+
 .main-wrapper {
-    background: #F5F6F8;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    
+}
+.searchbar-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-self:center;
+    margin-top: 3%;
+    align-items:center;
+    justify-content: center;   
+    
+
+    background: #FFFFFF;
+    width: 40%;
+    padding: 1% 1%;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+.searchbar {
+   display: flex;
+   flex-flow: row nowrap;
+   align-items:center;
+   justify-items: center;
+   justify-self: center;
+   color: #0d6efd;
+
 }
 
 .result-wrapper {
@@ -9,8 +48,8 @@
     flex-flow: column wrap;
     width: 40%;
     align-self: center;
-    /* border: red solid 2px; */
-    background: #FFFFFF; 
+    margin-top: 2%;
+    background: #FFFFFF;
     padding-top: 1%;
     padding-bottom: 1%;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
@@ -20,60 +59,58 @@
 
 .result-element {
     display: block;
-    border: black dotted 1px;    
+       
     margin: 1% 1.5%;
+    padding: 0 1%;
+    text-decoration: none;
+    color: #0d6efd;
+    border-radius: 2px;
 }
+
+.result-element:hover {
+    border: #0d6efd solid 1px; 
+    background-color: #0d6efd;
+    color: white;
+}
+
 
 /* Styles for company page */
 
-body {
-    background-color: #C2CFE0;
-}
-
 .wrapper {
-    font-family: 'Barlow Condensed', sans-serif;    
-    
+    font-family: 'Barlow Condensed', sans-serif;        
     margin: 3% 15%;
 } 
 
 .header-wrapper {
     background-color: white;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
-    border-radius: 4px;
-    
+    border-radius: 4px;    
     padding: 2% 3%;
 }
 
 .company-header{
     display: flex;
-    flex-flow: row nowrap;
-    /* border: red solid 1px; */
+    flex-flow: row nowrap;    
     align-items:flex-end;
-    height: 3rem;
-    /* justify-content: space-between; */
+    height: 3rem;    
 }
 
 .logo-wrapper {
-    /* align-self: baseline; */
     margin-bottom:0%;
 }
 
 img {
     display: block;
-    /* border: blue 1px solid; */
-    /* align-self:baseline; */
     max-height:2.5rem;  
   
 }
 .company-name{
     font-size: 1.5em;
-    /* border: black dotted 1px; */
     margin-left: 2%;
     font-weight: bold;
 }
 
 .price-wrapper{
-    /* border: black dotted 1px; */
     display: flex;
     flex-flow: nowrap row;
     width:50%;
@@ -83,21 +120,15 @@ img {
 }
 
 .price{
-    /* border: blue solid 1px; */
     width: 50%;
-    font-weight: bold;   
-
+    font-weight: bold;
 }
 
 .price-movement{
-    /* border: blue solid 1px; */
     margin-right:2%;
 }
 
-.percentage-movement{
-    /* border: blue solid 1px; */
 
-}
 
 .company-description{
     background-color: white;
@@ -112,4 +143,6 @@ img {
     background-color: white;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
     border-radius: 4px;
+    margin-top:3%;
+    padding: 2% 3%;
 }
