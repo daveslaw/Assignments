@@ -11,19 +11,15 @@ const urlPath = window.location.href;
 urlArray = urlPath.split("/");
 const queryStr = urlArray[urlArray.length - 1]
   .replace("company.html?symbol=", "");
-//u could use a pop mehtod here as an alternative
-//console.log(queryStr);
-
 
 const newUrl = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${queryStr}`;
-
 
 fetch(newUrl)
 .then((response) => response.json())
 .then((data) => {
-  //console.log(data);
   companyName.innerHTML = `${data.profile.companyName} (${data.symbol})`;
-  companyName.href = `${data.profile.website}`
+  companyName.href = `${data.profile.website}`;
+  companyName.style.textDecoration="none";
   stockPrice.innerHTML = `Stock price: ${data.profile.currency} ${data.profile.price}`;
   
   if (data.profile.changes > 0) {
@@ -49,7 +45,7 @@ fetch(newUrl)
 
   
 
-  //console.log(companyName.innerHTML);
+  
   
 
 })
@@ -74,30 +70,28 @@ const getChart = () => {
     
 
     
-const labels = dateArray;
+    const labels = dateArray;
 
-const data = {
-  labels: labels,
-  datasets: [{
-    label: `${historyData.symbol} Stock Price`,
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: priceHistoryArray,
+    const data = {
+      labels: labels,
+      datasets: [{
+      label: `${historyData.symbol} Stock Price`,
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: priceHistoryArray,  
+      }]
+    };
 
-    
-  }]
-};
+    const config = {
+      type: 'line',
+      data,
+      options: {}
+    };
 
-const config = {
-  type: 'line',
-  data,
-  options: {}
-};
-
-var myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
 
  
     
